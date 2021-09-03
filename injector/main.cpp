@@ -5,7 +5,7 @@ int main(int argc, char** argv) {
 
     SetConsoleTitleA(util::RandomString(26).c_str());
     
-    Injector* hardcore = new Injector(util::get_pid("notepad.exe"), "C:\\Users\\xxx\\source\\repos\\dll_esp_assaultcube\\Debug\\dll_esp_assaultcube.dll");
+    Injector* hardcore = new Injector(util::get_pid("notepad.exe"), "random.dll");
     
     if (hardcore->inject()) 
     {

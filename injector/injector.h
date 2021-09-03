@@ -6,8 +6,6 @@
 #include <fstream>
 #include <cstdint>
 #include <filesystem>
-#include <functional>
-
 
 #include <windows.h> 
 #include <TlHelp32.h>
@@ -17,7 +15,7 @@
 namespace util 
 {
 
-	inline DWORD get_pid(const char* ProcessName)
+	inline DWORD get_pid(const char* process_name)
 	{
 		HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
 
@@ -29,7 +27,7 @@ namespace util
 
 		do {
 
-			if (!strcmp(pe32.szExeFile, ProcessName))
+			if (!strcmp(pe32.szExeFile, process_name))
 			{
 				CloseHandle(hSnap);
 				return pe32.th32ProcessID;
@@ -41,7 +39,7 @@ namespace util
 		return NULL;
 	}
 
-	std::string RandomString(const size_t length)
+	std::string random_string(const size_t length)
 	{
 		std::string r;
 		static const char bet[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyzZ1234567890" };
